@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 using System.Drawing.Drawing2D;
-
 namespace p4
 {
  //   public class Towar
@@ -26,7 +25,7 @@ namespace p4
     {
 
         int x0 = 100;
-        int y0 = 300;
+        int y0 = 100;
         int x1 = 100;
         int y1 = 350;
         bool draw1 = false;
@@ -35,6 +34,7 @@ namespace p4
         bool draw4 = false;
         bool visited = false;
         bool grab = false;
+        bool sprawdzenie = true;
         int id = 0;
         int tx1 = 120;
         int ty1 = 380;
@@ -48,10 +48,7 @@ namespace p4
         int tx4 = 240;
         int ty4 = 380;
         string s_w1, s_w2, s_w3, s_w4;
-        int w1 = 0;
-        int w2 = 0;
-        int w3 = 0;
-        int w4 = 0;
+        int w1,w2,w3,w4 = 50;
         int limit = 600;
         string s_limit;
 
@@ -99,8 +96,8 @@ namespace p4
             Pen myPen = new Pen(System.Drawing.Color.Black);
             Pen myPen2 = new Pen(System.Drawing.Color.Red);
 
-            Rectangle noga = new Rectangle(50, 200, 30, 300);
-            Rectangle ramie = new Rectangle(20, 170, 400, 30);
+            Rectangle noga = new Rectangle(50, 100, 30, 300);
+            Rectangle ramie = new Rectangle(20, 70, 400, 30);
 
           
             Rectangle towar1 = new Rectangle(tx1, ty1, 20, 20);
@@ -130,27 +127,8 @@ namespace p4
                 e.Graphics.DrawRectangle(myPen, towar4);
             }
 
-            if ((y1 == 380) && (x0 < tx1 + 20) && (x0 > tx1) && (draw1 == true) && checkBox2.Checked)
-            {
-                id = 1;
-                visited = true;
-            }
+          
             
-            if( (y1 == 380) && (x0 < tx2 + 20) && (x0 > tx2) && (draw2 == true) && checkBox2.Checked)
-            {
-                id = 2;
-                visited = true;
-            }
-            if ((y1 == 380) && (x0 < tx3 + 20) && (x0 > tx3) && (draw3 == true) && checkBox2.Checked)
-            {
-                id = 3;
-                visited = true;
-            }
-            if ((y1 == 380) && (x0 < tx4 + 20) && (x0 > tx4) && (draw4 == true) && checkBox2.Checked)
-            {
-                id = 4;
-                visited = true;
-            }
             
         }
 
@@ -170,13 +148,17 @@ namespace p4
             {
                 switch (id)
                 {
-                    case 1: ty1 -= 5;
+                    case 1:
+                        if(ty1>110) ty1 -= 5;
                         break;
-                    case 2: ty2 -= 5;
+                    case 2:
+                        if (ty2 > 110) ty2 -= 5;
                         break;
-                    case 3: ty3 -= 5;
+                    case 3:
+                        if (ty3 > 110) ty3 -= 5;
                         break;
-                    case 4: ty4 -= 5;
+                    case 4:
+                        if (ty4 > 110) ty4 -= 5;
                         break;
                     default: break;
                 }
@@ -195,16 +177,16 @@ namespace p4
                 switch (id)
                 {
                     case 1:
-                        tx1 -= 5;
+                        if(tx1>85) tx1 -= 5;
                         break;
                     case 2:
-                        tx2 -= 5;
+                        if (tx2 > 85) tx2 -= 5;
                         break;
                     case 3:
-                        tx3 -= 5;
+                        if (tx3 > 85) tx3 -= 5;
                         break;
                     case 4:
-                        tx4 -= 5;
+                        if (tx4 > 85) tx4 -= 5;
                         break;
                     default: break;
                 }
@@ -213,7 +195,7 @@ namespace p4
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            if (y1 < 390)
+            if (y1 < 380)
             {
                 y1 += 5;
             }
@@ -222,16 +204,16 @@ namespace p4
                 switch (id)
                 {
                     case 1:
-                        ty1 += 5;
+                       if(ty1<380) ty1 += 5;
                         break;
                     case 2:
-                        ty2 += 5;
+                        if (ty2 < 380) ty2 += 5;
                         break;
                     case 3:
-                        ty3 += 5;
+                        if (ty3 < 380) ty3 += 5;
                         break;
                     case 4:
-                        ty4 += 5;
+                        if (ty4 < 380) ty4 += 5;
                         break;
                     default: break;
                 }
@@ -250,16 +232,16 @@ namespace p4
                         switch (id)
                         {
                             case 1:
-                                tx1 += 5;
+                            if(tx1<400) tx1 += 5;
                                 break;
                             case 2:
-                                tx2 += 5;
+                             if (tx2 < 400) tx2 += 5;
                                 break;
                             case 3:
-                                tx3 += 5;
+                            if (tx3 < 400) tx3 += 5;
                                 break;
                             case 4:
-                                tx4 += 5;
+                              if (tx4 < 400) tx4 += 5;
                                 break;
                             default: break;
                         }
@@ -273,9 +255,26 @@ namespace p4
             {
                 draw1 = true;
             }
-            if(!checkBox1.Checked)
+            else draw1 = false;
+            if (!checkBox1.Checked)
             {
-                draw1 = false;
+                if (id==1)
+                {
+                    if (y1 != 380 && grab == true)
+                    {
+                        draw1 = true;
+                        checkBox1.Checked = true;
+                        MessageBox.Show("NIE USUWAJ!");
+
+                    }
+                    else
+                    {
+                        draw1 = false;
+                        checkBox2.Checked = false;
+                        grab = false;
+                    }
+                }
+                
             }
         }
 
@@ -283,26 +282,163 @@ namespace p4
        {
            if(checkBox2.Checked)
           {
-               if (w1 <= limit) grab = true;
-               else grab = false;
+                if(y1!=380)
+                {
+                    visited = false;
+                }
+                if ((y1 == 380) && (x0 < tx1 + 20) && (x0 > tx1) && (draw1 == true))
+                {
+                    id = 1;
+                    visited = true;
+                }
+
+                if ((y1 == 380) && (x0 < tx2 + 20) && (x0 > tx2) && (draw2 == true))
+                {
+                    id = 2;
+                    visited = true;
+                }
+                if ((y1 == 380) && (x0 < tx3 + 20) && (x0 > tx3) && (draw3 == true))
+                {
+                    id = 3;
+                    visited = true;
+                }
+                if ((y1 == 380) && (x0 < tx4 + 20) && (x0 > tx4) && (draw4 == true))
+                {
+                    id = 4;
+                    visited = true;
+                }
+                switch (id)
+                {
+                    case 1:
+                        if (w1 <= limit) grab = true;
+                        else
+                        {
+                            grab = false;
+                            MessageBox.Show("ZA CIĘŻKIE!");
+                            checkBox2.Checked = false;
+                        }
+                        break;
+                    case 2:
+                        if (w2 <= limit) grab = true;
+                        else
+                        {
+                            grab = false;
+                            MessageBox.Show("ZA CIĘŻKIE!");
+                            checkBox2.Checked = false;
+                        }
+                        break;
+                    case 3:
+                        if (w3 <= limit) grab = true;
+                        else
+                        {
+                            grab = false;
+                            MessageBox.Show("ZA CIĘŻKIE!");
+                            checkBox2.Checked = false;
+                        }
+                        break;
+                    case 4:
+                        if (w4 <= limit) grab = true;
+                        else
+                        {
+                            grab = false;
+                            MessageBox.Show("ZA CIĘŻKIE!");
+                            checkBox2.Checked = false;
+                        }
+                        break;
+                }
            }
-           if (!checkBox2.Checked)
+            if (!checkBox2.Checked)
             {
-              grab = false;
-                visited = false;
-           }
+                switch (id)
+                {
+                    case 1:
+                        {
+                            if ((tx1 >= tx2 - 20 && tx1 <= tx2 + 20) || (tx1 >= tx3 - 20 && tx1 <= tx3 + 20) || (tx1 >= tx4 - 20 && tx1 <= tx4 + 20))
+                            {
+                                sprawdzenie = false;
+                            }
+                            break;
+                        }
+                    case 2:
+                        {
+                            if ((tx2 >= tx1 - 20 && tx2 <= tx1 + 20) || (tx2 >= tx3 - 20 && tx2 <= tx3 + 20) || (tx2 >= tx4 - 20 && tx2 <= tx4 + 20))
+                            {
+                                sprawdzenie = false;
+                            }
+                            break;
+                        }
+                    case 3:
+                        {
+                            if ((tx3 >= tx2 - 20 && tx3 <= tx2 + 20) || (tx3 >= tx1 - 20 && tx3 <= tx1 + 20) || (tx3>= tx4 - 20 && tx3 <= tx4 + 20))
+                            {
+                                sprawdzenie = false;
+                            }
+                            break;
+                        }
+                    case 4:
+                        {
+                            if ((tx4 >= tx2-20 && tx4 <= tx2 + 20) || (tx4 >= tx3-20 && tx4 <= tx3 + 20) || (tx4 >= tx1 - 20 && tx4 <= tx1 + 20))
+                            {
+                                sprawdzenie = false;
+                            }
+                            break;
+                        }
+                }
+                if (y1 != 380 && visited == true)
+                {
+                    checkBox2.Checked = true;
+                    MessageBox.Show("ZAKAZ!");
+                    grab = true;
+                    visited = true;
+                }
+                else
+                {
+                    if (sprawdzenie)
+                    {
+                        grab = false;
+                        visited = false;
+                    }
+                    else
+                    {
+                        checkBox2.Checked = true;
+                        MessageBox.Show("zle sprawdzenie");
+                        grab = true;
+                        visited = true;
+                    }
+                }
+               
+                
+             }
         }
 
 
         private void CheckBox3_CheckedChanged(object sender, EventArgs e)
         {
+
             if (checkBox3.Checked)
             {
                 draw2 = true;
             }
+            else draw2 = false;
             if (!checkBox3.Checked)
             {
-                draw2 = false;
+                if(id==2)
+                {
+                    if (y1 != 380 && grab == true)
+                    {
+                        draw2 = true;
+                        checkBox3.Checked = true;
+                        MessageBox.Show("NIE USUWAJ!");
+
+                    }
+                    else
+                    {
+                        draw2 = false;
+                        checkBox2.Checked = false;
+                        grab = false;
+                    }
+                }
+               
             }
         }
 
@@ -312,9 +448,26 @@ namespace p4
             {
                 draw3 = true;
             }
+            else draw3 = false;
             if (!checkBox4.Checked)
             {
-                draw3 = false;
+                if(id==3)
+                {
+                    if (y1 != 380 && grab == true)
+                    {
+                        draw3 = true;
+                        checkBox4.Checked = true;
+                        MessageBox.Show("NIE USUWAJ!");
+
+                    }
+                    else
+                    {
+                        draw3 = false;
+                        checkBox2.Checked = false;
+                        grab = false;
+                    }
+                }
+               
             }
         }
 
@@ -324,9 +477,26 @@ namespace p4
             {
                 draw4 = true;
             }
+            else draw4 = false;
             if (!checkBox5.Checked)
             {
-                draw4 = false;
+                if(id==4)
+                {
+                    if (y1 != 380 && grab == true)
+                    {
+                        draw4 = true;
+                        checkBox5.Checked = true;
+                        MessageBox.Show("NIE USUWAJ!");
+
+                    }
+                    else
+                    {
+                        draw4 = false;
+                        checkBox2.Checked = false;
+                        grab = false;
+                    }
+                }
+               
             }
         }
 
@@ -341,14 +511,6 @@ namespace p4
             s_limit= textBox5.Text;
             limit = int.Parse(s_limit);
         }
-
-
-
-        private void CheckBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void TextBox2_TextChanged(object sender, EventArgs e)
         {
@@ -367,6 +529,7 @@ namespace p4
             s_w4 = textBox4.Text;
             w4 = int.Parse(s_w4);
         }
+       
 
     }
 }
