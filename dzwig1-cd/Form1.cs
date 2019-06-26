@@ -11,16 +11,7 @@ using System.Globalization;
 using System.Drawing.Drawing2D;
 namespace p4
 {
- //   public class Towar
-//    {
-  //      public int x;
- //       public int y;
- //
- //       public void draw()
-  //      {
-//
-  //      }
-  //  }
+
     public partial class Form1 : Form
     {
 
@@ -43,14 +34,6 @@ namespace p4
         int limit = 600;
         string s_limit;
 
-        //     List<Towar> towary = new List<Towar>
-        //          {
-        //              new Towar{ x = 120, y= 380 },
-        //              new Towar{ x = 160, y= 380 },
-        //              new Towar{ x = 200, y= 380 },
-        //              new Towar{ x = 240, y= 380 }
-        //          };
-
         public Form1()
         {
             InitializeComponent();
@@ -60,23 +43,6 @@ namespace p4
         private void Form1_Load(object sender, EventArgs e)
         {
             
-            // Rectangle noga = new Rectangle(50, 100, 30, 300);
-            //  Rectangle ramie = new Rectangle(20, 70, 400, 30);
-            // g.DrawRectangle(myPen, noga);
-            // g.DrawRectangle(myPen, ramie);
-
-            // g.Clear(Color.White);
-            // g.Dispose();
-
-
-            //Rectangle noga = new Rectangle(50, 100, 30, 300);
-            // Rectangle ramie = new Rectangle(20, 70, 400, 30);
-            // Pen myPen2 = new Pen(System.Drawing.Color.Blue);
-            // Rectangle towar = new Rectangle(tx0, ty0, 20, 20);
-
-            //g.DrawRectangle(myPen, noga);
-            //  g.DrawRectangle(myPen, ramie);
-            //  g.DrawLine(myPen, x0, y0, x1, y1);
         }
       
 
@@ -90,8 +56,6 @@ namespace p4
             Color.FromArgb(250, 249,224, 75));
             e.Graphics.FillRectangle(solidBrush, 50, 100, 30, 300);
             e.Graphics.FillRectangle(solidBrush, 20, 70, 400, 30);
-          //  Rectangle noga = new Rectangle(50, 100, 30, 300);
-         //   Rectangle ramie = new Rectangle(20, 70, 400, 30);
 
           
             Rectangle towar1 = new Rectangle(tx1, ty1, 20, 20);
@@ -99,9 +63,6 @@ namespace p4
             Rectangle towar3 = new Rectangle(tx3, ty3, 20, 20);
             Rectangle towar4 = new Rectangle(tx4, ty4, 20, 20);
 
-
-         //   e.Graphics.DrawRectangle(myPen, noga);
-         //   e.Graphics.DrawRectangle(myPen, ramie);
             e.Graphics.DrawLine(myPen, 0, 400, 1000, 400);
             g.DrawLine(myPen, x0, y0, x1, y1);
             if(draw1==true)
