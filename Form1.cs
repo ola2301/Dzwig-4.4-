@@ -247,21 +247,34 @@ namespace p4
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
-            {   
-                tx1 = 120;
-                ty1 = 380;
-                if ((tx1 > tx2 - 20 && tx1 < tx2 + 20) || (tx1 > tx3 - 20 && tx1 < tx3 + 20) || (tx1 > tx4 - 20 && tx1 < tx4 + 20))
+            {  if(id==1 && grab==true)
                 {
-                    draw1 = false;
-                    MessageBox.Show("TU JUŻ STOI INNY TOWAR!");
-                    checkBox1.Checked = false;
+                    if ((tx1 > tx2 - 20 && tx1 < tx2 + 20) || (tx1 > tx3 - 20 && tx1 < tx3 + 20) || (tx1 > tx4 - 20 && tx1 < tx4 + 20))
+                    {
+                        draw1 = false;
+                        MessageBox.Show("TU JUŻ STOI INNY TOWAR!");
+                        checkBox1.Checked = false;
+                    }
+                    else
+                    {
+                        draw1 = true;
+                    }
                 }
                 else
                 {
-                    draw1 = true;
+                    tx1 = 120;
+                    ty1 = 380;
+                    if ((tx1 > tx2 - 20 && tx1 < tx2 + 20) || (tx1 > tx3 - 20 && tx1 < tx3 + 20) || (tx1 > tx4 - 20 && tx1 < tx4 + 20))
+                    {
+                        draw1 = false;
+                        MessageBox.Show("TU JUŻ STOI INNY TOWAR!");
+                        checkBox1.Checked = false;
+                    }
+                    else
+                    {
+                        draw1 = true;
+                    }
                 }
-
-
             }
 
             if (!checkBox1.Checked)
@@ -447,17 +460,35 @@ namespace p4
 
             if (checkBox3.Checked)
             {
-                tx2 = 160;
-                ty2 = 380;
-                if ((tx2 > tx1 - 20 && tx2 < tx1 + 20) || (tx2 >tx3 - 20 && tx2 < tx3 + 20) || (tx2 > tx4 - 20 && tx2 < tx4 + 20))
+                if (id==2 && grab ==true)
                 {
-                    draw2 = false;
-                    MessageBox.Show("TU JUŻ STOI INNY TOWAR!");
-                    checkBox3.Checked = false;
+                    if ((tx2 > tx1 - 20 && tx2 < tx1 + 20) || (tx2 > tx3 - 20 && tx2 < tx3 + 20) || (tx2 > tx4 - 20 && tx2 < tx4 + 20))
+                    {
+                        draw2 = false;
+                        MessageBox.Show("TU JUŻ STOI INNY TOWAR!");
+                        checkBox3.Checked = false;
+                    }
+                    else
+                    {
+                        draw2 = true;
+                    }
+
                 }
                 else
                 {
-                    draw2 = true;
+                    tx2 = 160;
+                    ty2 = 380;
+                    if ((tx2 > tx1 - 20 && tx2 < tx1 + 20) || (tx2 > tx3 - 20 && tx2 < tx3 + 20) || (tx2 > tx4 - 20 && tx2 < tx4 + 20))
+                    {
+                        draw2 = false;
+                        MessageBox.Show("TU JUŻ STOI INNY TOWAR!");
+                        checkBox3.Checked = false;
+                    }
+                    else
+                    {
+                        draw2 = true;
+                    }
+
                 }
 
 
@@ -498,17 +529,33 @@ namespace p4
         {
             if (checkBox4.Checked)
             {
-                tx3 = 200;
-                ty3 = 380;
-                if ((tx3 > tx2 - 20 && tx3 < tx2 + 20) || (tx3 > tx1 - 20 && tx3 < tx1 + 20) || (tx3 > tx4 - 20 && tx3 < tx4 + 20))
+                if (id==3 && grab==true)
                 {
-                    draw3 = false;
-                    MessageBox.Show("TU JUŻ STOI INNY TOWAR!");
-                    checkBox4.Checked = false;
+                    if ((tx3 > tx2 - 20 && tx3 < tx2 + 20) || (tx3 > tx1 - 20 && tx3 < tx1 + 20) || (tx3 > tx4 - 20 && tx3 < tx4 + 20))
+                    {
+                        draw3 = false;
+                        MessageBox.Show("TU JUŻ STOI INNY TOWAR!");
+                        checkBox4.Checked = false;
+                    }
+                    else
+                    {
+                        draw3 = true;
+                    }
                 }
                 else
                 {
-                    draw3 = true;
+                    tx3 = 200;
+                    ty3 = 380;
+                    if ((tx3 > tx2 - 20 && tx3 < tx2 + 20) || (tx3 > tx1 - 20 && tx3 < tx1 + 20) || (tx3 > tx4 - 20 && tx3 < tx4 + 20))
+                    {
+                        draw3 = false;
+                        MessageBox.Show("TU JUŻ STOI INNY TOWAR!");
+                        checkBox4.Checked = false;
+                    }
+                    else
+                    {
+                        draw3 = true;
+                    }
                 }
 
             }
@@ -546,18 +593,35 @@ namespace p4
         {
             if (checkBox5.Checked)
             {
-                tx4 = 240;
-                ty4 = 380;
-                if ((tx4 > tx2 - 20 && tx4 < tx2 + 20) || (tx4 > tx3 - 20 && tx4 < tx3 + 20) || (tx4 > tx1 - 20 && tx4 < tx1 + 20))
+                if( id==3 && grab==true)
                 {
-                    draw4 = false;
-                    MessageBox.Show("TU JUŻ STOI INNY TOWAR!");
-                    checkBox5.Checked = false;
+                    if ((tx4 > tx2 - 20 && tx4 < tx2 + 20) || (tx4 > tx3 - 20 && tx4 < tx3 + 20) || (tx4 > tx1 - 20 && tx4 < tx1 + 20))
+                    {
+                        draw4 = false;
+                        MessageBox.Show("TU JUŻ STOI INNY TOWAR!");
+                        checkBox5.Checked = false;
+                    }
+                    else
+                    {
+                        draw4 = true;
+                    }
                 }
                 else
                 {
-                    draw4 = true;
+                    tx4 = 240;
+                    ty4 = 380;
+                    if ((tx4 > tx2 - 20 && tx4 < tx2 + 20) || (tx4 > tx3 - 20 && tx4 < tx3 + 20) || (tx4 > tx1 - 20 && tx4 < tx1 + 20))
+                    {
+                        draw4 = false;
+                        MessageBox.Show("TU JUŻ STOI INNY TOWAR!");
+                        checkBox5.Checked = false;
+                    }
+                    else
+                    {
+                        draw4 = true;
+                    }
                 }
+                
 
             }
 
