@@ -168,22 +168,23 @@ namespace p4
             }
             if (visited == true && grab == true)
             {
-                switch (id)
-                {
-                    case 1:
-                        if(tx1>85) tx1 -= 5;
-                        break;
-                    case 2:
-                        if (tx2 > 85) tx2 -= 5;
-                        break;
-                    case 3:
-                        if (tx3 > 85) tx3 -= 5;
-                        break;
-                    case 4:
-                        if (tx4 > 85) tx4 -= 5;
-                        break;
-                    default: break;
-                }
+               
+                    switch (id)
+                    {
+                        case 1:
+                            if (tx1 > 85) tx1 -= 5;
+                            break;
+                        case 2:
+                            if (tx2 > 85) tx2 -= 5;
+                            break;
+                        case 3:
+                            if (tx3 > 85) tx3 -= 5;
+                            break;
+                        case 4:
+                            if (tx4 > 85) tx4 -= 5;
+                            break;
+                        default: break;
+                    }
             }
         }
 
@@ -243,13 +244,13 @@ namespace p4
                     }
                 }
 
-        private void CheckBox1_Click(object sender, EventArgs e)
+        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
-            {
+            {   
                 tx1 = 120;
                 ty1 = 380;
-                if ((tx1 >= tx2 - 20 && tx1 <= tx2 + 20) || (tx1 >= tx3 - 20 && tx1 <= tx3 + 20) || (tx1 >= tx4 - 20 && tx1 <= tx4 + 20))
+                if ((tx1 > tx2 - 20 && tx1 < tx2 + 20) || (tx1 > tx3 - 20 && tx1 < tx3 + 20) || (tx1 > tx4 - 20 && tx1 < tx4 + 20))
                 {
                     draw1 = false;
                     MessageBox.Show("TU JUŻ STOI INNY TOWAR!");
@@ -259,32 +260,35 @@ namespace p4
                 {
                     draw1 = true;
                 }
-                
+
 
             }
-            else draw1 = false;
+
             if (!checkBox1.Checked)
             {
-                if (id==1)
+                if (id == 1)
                 {
                     if (y1 != 380 && grab == true)
                     {
                         draw1 = true;
-                        checkBox1.Checked = true;
+                        
                         MessageBox.Show("NIE USUWAJ, TOWAR W UŻYCIU!");
+                        checkBox1.Checked = true;
 
                     }
                     else
                     {
                         draw1 = false;
-                        checkBox2.Checked = false;
+                       
                         grab = false;
                         tx1 = 0;
                         ty1 = 0;
+                        checkBox2.Checked = false;
                     }
                 }
                 else
                 {
+                    draw1 = false;
                     tx1 = 0;
                     ty1 = 0;
                 }
@@ -296,9 +300,10 @@ namespace p4
        {
            if(checkBox2.Checked)
           {
+
                 if (!id_pop)
                 {
-                    if (y1 != 380) // nie wiem czy tu czy przed ifem
+                    if (y1 != 380)
                     {
                         visited = false;
                     }
@@ -417,14 +422,17 @@ namespace p4
                         visited = false;
                         id = 0;
                         id_pop = false;
+                        checkBox2.Checked = false;
                     }
                     else
                     {
-                        MessageBox.Show("TU JUŻ STOI INNY TOWAR!");
+                        MessageBox.Show("TU JUŻ STOI INNY TOWAR (sprawdz)!");
                         grab = true;
                         visited = true;
+                        sprawdzenie = true;
                         id_pop = true;
                         checkBox2.Checked = true;
+
 
                     }
                 }
@@ -441,7 +449,7 @@ namespace p4
             {
                 tx2 = 160;
                 ty2 = 380;
-                if ((tx2 >= tx1 - 20 && tx2 <= tx1 + 20) || (tx2 >= tx3 - 20 && tx2 <= tx3 + 20) || (tx2 >= tx4 - 20 && tx2 <= tx4 + 20))
+                if ((tx2 > tx1 - 20 && tx2 < tx1 + 20) || (tx2 >tx3 - 20 && tx2 < tx3 + 20) || (tx2 > tx4 - 20 && tx2 < tx4 + 20))
                 {
                     draw2 = false;
                     MessageBox.Show("TU JUŻ STOI INNY TOWAR!");
@@ -451,10 +459,10 @@ namespace p4
                 {
                     draw2 = true;
                 }
-                
+
 
             }
-            else draw2 = false;
+
             if (!checkBox3.Checked)
             {
                 if(id==2)
@@ -462,25 +470,27 @@ namespace p4
                     if (y1 != 380 && grab == true)
                     {
                         draw2 = true;
-                        checkBox3.Checked = true;
+                       
                         MessageBox.Show("NIE USUWAJ, TOWAR W UŻYCIU!");
+                        checkBox3.Checked = true;
 
                     }
                     else
                     {
                         draw2 = false;
-                        checkBox2.Checked = false;
+                        
                         grab = false;
                             tx2 = 0;
                             ty2 = 0;
+                        checkBox2.Checked = false;
                     }
                 }
                 else
-                {   //czy tu nie powinno być jeszcze draw2 = false?
+                {
+                    draw2 = false;
                     tx2 = 0;
                     ty2 = 0;
                 }
-               
             }
         }
 
@@ -490,7 +500,7 @@ namespace p4
             {
                 tx3 = 200;
                 ty3 = 380;
-                if ((tx3 >= tx2 - 20 && tx3 <= tx2 + 20) || (tx3 >= tx1 - 20 && tx3 <= tx1 + 20) || (tx3 >= tx4 - 20 && tx3 <= tx4 + 20))
+                if ((tx3 > tx2 - 20 && tx3 < tx2 + 20) || (tx3 > tx1 - 20 && tx3 < tx1 + 20) || (tx3 > tx4 - 20 && tx3 < tx4 + 20))
                 {
                     draw3 = false;
                     MessageBox.Show("TU JUŻ STOI INNY TOWAR!");
@@ -502,7 +512,6 @@ namespace p4
                 }
 
             }
-            else draw3 = false;
             if (!checkBox4.Checked)
             {
                 if(id==3)
@@ -510,21 +519,22 @@ namespace p4
                     if (y1 != 380 && grab == true)
                     {
                         draw3 = true;
-                        checkBox4.Checked = true;
                         MessageBox.Show("NIE USUWAJ, TOWAR W UŻYCIU!");
+                        checkBox4.Checked = true;
 
                     }
                     else
                     {
-                        draw3 = false;
-                        checkBox2.Checked = false;
+                        draw3 = false;  
                         grab = false;
                         tx3 = 0;
                         ty3 = 0;
+                        checkBox2.Checked = false;
                     }
                 }
                 else
                 {
+                    draw3 = false;
                     tx3 = 0;
                     ty3 = 0;
                 }
@@ -538,7 +548,7 @@ namespace p4
             {
                 tx4 = 240;
                 ty4 = 380;
-                if ((tx4 >= tx2 - 20 && tx4 <= tx2 + 20) || (tx4 >= tx3 - 20 && tx4 <= tx3 + 20) || (tx4 >= tx1 - 20 && tx4 <= tx1 + 20))
+                if ((tx4 > tx2 - 20 && tx4 < tx2 + 20) || (tx4 > tx3 - 20 && tx4 < tx3 + 20) || (tx4 > tx1 - 20 && tx4 < tx1 + 20))
                 {
                     draw4 = false;
                     MessageBox.Show("TU JUŻ STOI INNY TOWAR!");
@@ -550,7 +560,7 @@ namespace p4
                 }
 
             }
-            else draw4 = false;
+
             if (!checkBox5.Checked)
             {
                 if(id==4)
@@ -558,25 +568,27 @@ namespace p4
                     if (y1 != 380 && grab == true)
                     {
                         draw4 = true;
-                        checkBox5.Checked = true;
+
                         MessageBox.Show("NIE USUWAJ, TOWAR W UŻYCIU!");
+                        checkBox5.Checked = true;
 
                     }
                     else
                     {
                         draw4 = false;
-                        checkBox2.Checked = false;
+
                         grab = false;
                         tx4 = 0;
                         ty4 = 0;
+                        checkBox2.Checked = false;
                     }
                 }
                 else
                 {
+                    draw4 = false;
                     tx4 = 0;
                     ty4 = 0;
                 }
-
             }
         }
 
