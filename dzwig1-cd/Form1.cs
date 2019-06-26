@@ -27,7 +27,7 @@ namespace p4
         int x0 = 100;
         int y0 = 100;
         int x1 = 100;
-        int y1 = 350;
+        int y1 = 340;
         bool draw1 = false;
         bool draw2 = false;
         bool draw3 = false;
@@ -136,23 +136,23 @@ namespace p4
         {
             if (y1 > 110)
             {
-                y1 -= 5;
+                y1 -= 20;
             }
-            if(visited==true && grab==true)
+            if (visited == true && grab == true)
             {
                 switch (id)
                 {
                     case 1:
-                        if(ty1>110) ty1 -= 5;
+                        if (ty1 > 110) ty1 -= 20;
                         break;
                     case 2:
-                        if (ty2 > 110) ty2 -= 5;
+                        if (ty2 > 110) ty2 -= 20;
                         break;
                     case 3:
-                        if (ty3 > 110) ty3 -= 5;
+                        if (ty3 > 110) ty3 -= 20;
                         break;
                     case 4:
-                        if (ty4 > 110) ty4 -= 5;
+                        if (ty4 > 110) ty4 -= 20;
                         break;
                     default: break;
                 }
@@ -161,30 +161,82 @@ namespace p4
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            if (x0 > 85)
+            if (!grab)
             {
-                x0 -= 5;
-                x1 -= 5;
+                if (x0 > 85)
+                {
+                    x0 -= 5;
+                    x1 -= 5;
+                }
             }
-            if (visited == true && grab == true)
+            else
             {
-               
-                    switch (id)
+                if (y1 == 380) //nie można przesunąć jeśli cały czas na ziemi
+                {
+
+                }
+
+                else
+                {
+                    if (visited == true)
                     {
-                        case 1:
-                            if (tx1 > 85) tx1 -= 5;
-                            break;
-                        case 2:
-                            if (tx2 > 85) tx2 -= 5;
-                            break;
-                        case 3:
-                            if (tx3 > 85) tx3 -= 5;
-                            break;
-                        case 4:
-                            if (tx4 > 85) tx4 -= 5;
-                            break;
-                        default: break;
+                        switch (id)
+                        {
+                            case 1:
+                                {
+                                    if (tx1 > 85)
+                                        tx1 -= 5;
+                                    if (x0 > 85)
+                                    {
+                                        x0 -= 5;
+                                        x1 -= 5;
+                                    }
+
+                                }
+                                break;
+                            case 2:
+                                {
+                                    if (tx2 > 85) tx2 -= 5;
+                                    if (x0 > 85)
+                                    {
+                                        x0 -= 5;
+                                        x1 -= 5;
+                                    }
+                                }
+
+                                break;
+                            case 3:
+
+                                {
+                                    if (tx3 > 85) tx3 -= 5;
+                                    if (x0 > 85)
+                                    {
+                                        x0 -= 5;
+                                        x1 -= 5;
+                                    }
+                                }
+
+
+                                break;
+                            case 4:
+
+                                {
+                                    if (tx4 > 85) tx4 -= 5;
+                                    if (x0 > 85)
+                                    {
+                                        x0 -= 5;
+                                        x1 -= 5;
+                                    }
+                                }
+
+                                break;
+                            default: break;
+                        }
                     }
+
+                }
+
+
             }
         }
 
@@ -192,23 +244,116 @@ namespace p4
         {
             if (y1 < 380)
             {
-                y1 += 5;
+                switch(id)
+                {
+                    case 1:
+                            if ((draw2 == true || draw3 == true || draw4 == true) && ((tx1 > tx2 - 20 && tx1 < tx2 + 20) || (tx1 > tx3 - 20 && tx1 < tx3 + 20) || (tx1 > tx4 - 20 && tx1 < tx4 + 20)) && ty1 == 360)
+                            {
+
+                            }
+                            else
+                            {
+                                y1 += 20;
+                            }
+                        break;
+                    case 2:
+                        if ((draw1 == true || draw3 == true || draw4 == true) && ((tx2 > tx1 - 20 && tx2 < tx1 + 20) || (tx2 > tx3 - 20 && tx2 < tx3 + 20) || (tx2 > tx4 - 20 && tx2 < tx4 + 20)) && ty2 == 360)
+                        {
+
+                        }
+                        else
+                        {
+                            y1 += 20;
+                        }
+                        break;
+                    case 3:
+                        if ((draw1 == true || draw2 == true || draw4 == true) && ((tx3 > tx1 - 20 && tx3 < tx1 + 20) || (tx3 > tx2 - 20 && tx3 < tx2 + 20) || (tx3 > tx4 - 20 && tx3 < tx4 + 20)) && ty3 == 360)
+                        {
+
+                        }
+                        else
+                        {
+                            y1 += 20;
+                        }
+                        break;
+                    case 4:
+                        if ((draw1 == true || draw2 == true || draw3 == true) && ((tx4 > tx1 - 20 && tx4 < tx1 + 20) || (tx4 > tx2 - 20 && tx4 < tx2 + 20) || (tx4 > tx3 - 20 && tx4 < tx3 + 20)) && ty4 == 360)
+                        {
+
+                        }
+                        else
+                        {
+                            y1 += 20;
+                        }
+                        break;
+                    default:
+                        {
+                            y1 += 20;
+                        }
+                        break;
+
+
+                }
+
             }
             if (visited == true && grab == true)
             {
                 switch (id)
                 {
                     case 1:
-                       if(ty1<380) ty1 += 5;
+                        if (ty1 < 380)
+                        {
+                            if (ty1==360 && (draw2 == true || draw3 == true || draw4 == true) && ((tx1 > tx2 - 20 && tx1 < tx2 + 20) || (tx1 > tx3 - 20 && tx1 < tx3 + 20) || (tx1 > tx4 - 20 && tx1 < tx4 + 20)))
+                            {
+
+                            }
+                            else
+                            {
+                                ty1 += 20;
+                            }
+                        }
                         break;
                     case 2:
-                        if (ty2 < 380) ty2 += 5;
+                        if (ty2 < 380)
+                        {
+                            if ((draw1 == true || draw3 == true || draw4 == true) && ((tx2 > tx1 - 20 && tx2 < tx1 + 20) || (tx2 > tx3 - 20 && tx2 < tx3 + 20) || (tx2 > tx4 - 20 && tx2 < tx4 + 20)) && ty2 == 360)
+                            {
+
+                            }
+                            else
+                            {
+                                ty2 += 20;
+                            }
+                        }
+                        
                         break;
                     case 3:
-                        if (ty3 < 380) ty3 += 5;
+                        if (ty3 < 380)
+                        {
+                            if ((draw1 == true || draw2 == true || draw4 == true) && ((tx3 > tx1 - 20 && tx3 < tx1 + 20) || (tx3 > tx2 - 20 && tx3 < tx2 + 20) || (tx3 > tx4 - 20 && tx3 < tx4 + 20)) && ty3 == 360)
+                            {
+
+                            }
+                            else
+                            {
+                                ty3 += 20;
+                            }
+                        }
                         break;
                     case 4:
-                        if (ty4 < 380) ty4 += 5;
+                        if (ty4 < 380)
+                        {
+                            if ((draw1 == true || draw2 == true || draw3 == true) && ((tx4 > tx1 - 20 && tx4 < tx1 + 20) || (tx4 > tx2 - 20 && tx4 < tx2 + 20) || (tx4 > tx3 - 20 && tx4 < tx3 + 20)) && ty4 == 360)
+                            {
+
+                            }
+                            else
+                            {
+                                ty1 += 20;
+                            }
+                            break;
+                        }
+
                         break;
                     default: break;
                 }
@@ -216,34 +361,77 @@ namespace p4
         }
 
         private void Button4_Click(object sender, EventArgs e)
+        {
+            if (!grab)
+            {
+                if (x0 < 400)
                 {
-                    if (x0 < 400)
-                    {
-                        x0 += 5;
-                        x1 += 5;
-                    }
-                    if (visited == true && grab == true)
+                    x0 += 5;
+                    x1 += 5;
+                }
+            }
+
+            else
+            {
+                if (y1 == 380) //nie można przesunąć jeśli cały czas na ziemi
+                {
+
+                }
+                else
+                {
+                    if (visited == true)
                     {
                         switch (id)
                         {
                             case 1:
-                            if(tx1<400) tx1 += 5;
+                                {
+                                    if (tx1 < 400) tx1 += 5;
+                                    if (x0 < 400)
+                                    {
+                                        x0 += 5;
+                                        x1 += 5;
+                                    }
+                                }
                                 break;
                             case 2:
-                             if (tx2 < 400) tx2 += 5;
+                                {
+                                    if (tx2 < 400) tx2 += 5;
+                                    if (x0 < 400)
+                                    {
+                                        x0 += 5;
+                                        x1 += 5;
+                                    }
+                                }
                                 break;
                             case 3:
-                            if (tx3 < 400) tx3 += 5;
+                                {
+                                    if (tx3 < 400) tx3 += 5;
+                                    if (x0 < 400)
+                                    {
+                                        x0 += 5;
+                                        x1 += 5;
+                                    }
+                                }
                                 break;
                             case 4:
-                              if (tx4 < 400) tx4 += 5;
+                                {
+                                    if (tx4 < 400) tx4 += 5;
+                                    if (x0 < 400)
+                                    {
+                                        x0 += 5;
+                                        x1 += 5;
+                                    }
+                                }
                                 break;
                             default: break;
                         }
-
                     }
                 }
 
+            }
+        }
+
+       
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
@@ -264,10 +452,10 @@ namespace p4
                 {
                     tx1 = 120;
                     ty1 = 380;
-                    if ((tx1 > tx2 - 20 && tx1 < tx2 + 20) || (tx1 > tx3 - 20 && tx1 < tx3 + 20) || (tx1 > tx4 - 20 && tx1 < tx4 + 20))
+                    if ((tx1 > tx2 - 20 && tx1 < tx2 + 20) || (tx1 > tx3 - 20 && tx1 < tx3 + 20) || (tx1 > tx4 - 20 && tx1 < tx4 + 20) && ty1==380)
                     {
                         draw1 = false;
-                        MessageBox.Show("TU JUŻ STOI INNY TOWAR else!");
+                        MessageBox.Show("TU JUŻ STOI INNY TOWAR !");
                         checkBox1.Checked = false;
                     }
                     else
