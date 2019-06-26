@@ -1,0 +1,10 @@
+C:\Users\walen\Desktop\Studia\2. Semestr\Techniki programowania\dzwig1-cd\bin\Debug\p4.exe.config
+C:\Users\walen\Desktop\Studia\2. Semestr\Techniki programowania\dzwig1-cd\bin\Debug\p4.exe
+C:\Users\walen\Desktop\Studia\2. Semestr\Techniki programowania\dzwig1-cd\bin\Debug\p4.pdb
+C:\Users\walen\Desktop\Studia\2. Semestr\Techniki programowania\dzwig1-cd\obj\Debug\p4.csprojAssemblyReference.cache
+C:\Users\walen\Desktop\Studia\2. Semestr\Techniki programowania\dzwig1-cd\obj\Debug\p4.Form1.resources
+C:\Users\walen\Desktop\Studia\2. Semestr\Techniki programowania\dzwig1-cd\obj\Debug\p4.Properties.Resources.resources
+C:\Users\walen\Desktop\Studia\2. Semestr\Techniki programowania\dzwig1-cd\obj\Debug\p4.csproj.GenerateResource.cache
+C:\Users\walen\Desktop\Studia\2. Semestr\Techniki programowania\dzwig1-cd\obj\Debug\p4.csproj.CoreCompileInputs.cache
+C:\Users\walen\Desktop\Studia\2. Semestr\Techniki programowania\dzwig1-cd\obj\Debug\p4.exe
+C:\Users\walen\Desktop\Studia\2. Semestr\Techniki programowania\dzwig1-cd\obj\Debug\p4.pdb
